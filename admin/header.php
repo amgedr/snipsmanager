@@ -23,7 +23,7 @@
 		if($filename != "login.php" & $filename != "forgotpassword.php") {
 	?>
 	<ul>
-		<li><a href="index.php">General</a></li>
+		<li><a href="general.php">General</a></li>
         <li><a href="interface.php">Interface</a></li>		
 	</ul>
     <?php } ?>

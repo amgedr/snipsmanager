@@ -38,7 +38,7 @@ include('config.php');
 include('includes/functions.php');
 connect();
 
-if(file_exists("./install.php")){
+if(file_exists("./install.php") & !stristr($sitename, 'localhost')){
 	die("Please open 'install.php' in your browser to install CodeHave.<br />" . 
 		"When you finish installing the script delete the file 'install.php'!");
 }

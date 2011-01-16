@@ -120,15 +120,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     <div id="sbicons" style="height: 32px; width:300px; float:right; text-align:center;"><?php echo ch_displaysocialbookmarksonly(); ?></div></td>
 </tr>
 <tr>
-    <td colspan="2">Show Download button:</td>
-    <td><input type="checkbox" name="download" id="download" /></td>
+    <td>&nbsp;</td>
+    <td></td>
+    <td></td>
 </tr>
 <tr>
     <td>&nbsp;</td>
     <td></td>
     <td style="text-align:right;"><input type="submit" value="Submit" /></td>
 </tr>
-</table>	
+</table>
 </form>
 </div></center>
    <div class='bottom'></div>
