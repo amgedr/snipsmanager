@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Copyright (c) 2010-2011 CodeHave (http://www.codehave.com/), All Rights Reserved
  * A CodeHill Creation (http://www.codehill.com/)
@@ -31,44 +31,40 @@
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
  *
+ *
+ * This page creates the JSON text needed to display the Days chart in admin/index.php
+ *
  */
  
-session_start(); 
-include('../config.php');
-include('../includes/functions.php');
-connect();
+include("../open-flash-chart.php");
 
-include('header.php'); 
+$title = new title("Past 30 Days");
 
-require('../includes/login.class.php');
-$loginSys = new LoginSystem();
+//create teh line chart and set the values
+$values = array(1,2,3,2,3,6,7,8,9,2,4,1,6,8,4,2,6,8,9,5,3,1,5,9,0,12,4,7,8,4,9,9,9);
+$line = new line();
+$line->set_values($values);
+$line->set_colour("1111ff");
 
-// if not logged in goto login form, otherwise we can view our page
-if(!$loginSys->isLoggedIn()) {
-	header("Location: login.php");
-	exit;
-}?>
+//create a Y Axis object and set the minimum and maximum
+$ymax = (max($values)) + (10 - (max($values) % 10));  //round the maximum to the nearest 10
+$y = new y_axis();
+$y->set_range( 0, $ymax, $ymax/5);
+$y->set_grid_colour("dddddd");
+$y->set_colour("000000");
 
-	<div class='sub'>
-	    <span>Logged in as <?php echo  $_SESSION['userName']; ?>&nbsp;&nbsp;
-    	<a href="changepassword.php">Change Password</a>&nbsp;&nbsp;
-    	<a href="../includes/logout.php">Logout</a></span>
-    	Home</div>
+//create an X Axis object
+$x = new x_axis();
+$x->set_grid_colour("dddddd");
+$x->set_colour("000000");
 
-	<div class='content'>
-		<div id='error'></div>
+$chart = new open_flash_chart();
+$chart->set_title($title);
+$chart->add_element($line);
+$chart->set_bg_colour("ffffff");
+$chart->set_y_axis($y);
+$chart->set_x_axis($x);
 
-<div class='top'></div>
-<center><div class='textbox2' name="gottaload">
+echo $chart->toString();   //print out the above parameters in JSON
 
-<script type="text/javascript" src="../includes/ofc/js/swfobject.js"></script>
-<script type="text/javascript">
-	swfobject.embedSWF("../includes/ofc/open-flash-chart.swf", "admin_days", "580", "250", "9.0.0", "expressInstall.swf", {"data-file":"../includes/ofc/charts/admin_days.php"});
-</script>
-
-<center><div id="admin_days"></div></center>
-
-</div></center>
-   <div class='bottom'></div>
-
-<?php include("footer.php"); ?>
+?>
