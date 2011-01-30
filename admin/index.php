@@ -63,10 +63,10 @@ if(!$loginSys->isLoggedIn()) {
 
 <script type="text/javascript" src="../includes/ofc/js/swfobject.js"></script>
 <script type="text/javascript">
-	swfobject.embedSWF("../includes/ofc/open-flash-chart.swf", "admin_days", "575", "300", "9.0.0", "expressInstall.swf", {"data-file":"../includes/ofc/charts/admin_days.php"});
+	swfobject.embedSWF("../includes/ofc/open-flash-chart.swf", "admin_days", "575", "300", "9.0.0", "../includes/expressInstall.swf", {"data-file":"../includes/ofc/charts/admin_days.php"});
 </script>
 <script type="text/javascript">
-	swfobject.embedSWF("../includes/ofc/open-flash-chart.swf", "admin_types", "575", "300", "9.0.0", "expressInstall.swf", {"data-file":"../includes/ofc/charts/admin_types.php"});
+	swfobject.embedSWF("../includes/ofc/open-flash-chart.swf", "admin_types", "575", "300", "9.0.0", "../includes/expressInstall.swf", {"data-file":"../includes/ofc/charts/admin_types.php"});
 </script>
 
 <div class='textbox2' name="gottaload">
