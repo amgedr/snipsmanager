@@ -33,12 +33,12 @@
  *
  */
  
-session_start(); 
+session_start();
 include('../config.php');
 include('../includes/functions.php');
 connect();
 
-include('header.php'); 
+include('header.php');
 
 require('../includes/login.class.php');
 $loginSys = new LoginSystem();
@@ -53,43 +53,53 @@ if(!$loginSys->isLoggedIn()) {
 	    <span>Logged in as <?php echo  $_SESSION['userName']; ?>&nbsp;&nbsp;
     	<a href="changepassword.php">Change Password</a>&nbsp;&nbsp;
     	<a href="../includes/logout.php">Logout</a></span>
-    	Home</div>
+    	Moderate</div>
 
 	<div class='content'>
 		<div id='error'></div>
 
 <div class='top'></div>
 <center>
+<div class='textbox2'>
 
-<script type="text/javascript" src="../includes/ofc/js/swfobject.js"></script>
-<script type="text/javascript">
-	swfobject.embedSWF("../includes/ofc/open-flash-chart.swf", "admin_days", "575", "300", "9.0.0", "expressInstall.swf", {"data-file":"../includes/ofc/charts/admin_days.php"});
+<script type="text/javascript" language="javascript" >
+	function deleterow(id){
+		if (confirm('Are you sure you want to delete this snippet?')) {
+			$.post('../includes/delete.php', {id: +id},
+				function(){
+					$("#grid").load("moderategrid.php<?php if(!empty($_GET['page'])) echo "?page=" . $_GET['page']; ?>").fadeIn('slow');
+				}
+			);
+		}
+	}
+	
+	//set the checkbox value of all checkboxes using the checkboxes CSS class to status
+	function selectAll(status) {		
+		$(".checkboxes").each( function() {
+			$(this).attr("checked",status);
+		})
+	}
+	
+	//display the code in a jQuery dialog
+	function showCode(codeTitle, codeId, codeType) {
+		var txt = '<h2>ID: ' + codeId + '</h2><br /><input type="text" id="codetitle" name="codetitle" value="' + 
+			codeTitle + '" /><br /><textarea id="codeview" name="codeview"></textarea>';
+
+		$.prompt(txt, { buttons: {Change:true, Cancel:false}, opacity: 0, 
+			callback: function(v,m,f){ if(v){     
+				$.post('moderatemodify.php', {id:codeId, codetitle:f.codetitle, code:f.codeview});
+				$("#grid").load("moderategrid.php<?php if(!empty($_GET['page'])) echo "?page=" . $_GET['page']; ?>").fadeIn('slow');
+			}}});
+		$.get("moderatecode.php?id=" + codeId, function(data){ $('textarea#codeview').val(data); });
+		
+	}
 </script>
-<script type="text/javascript">
-	swfobject.embedSWF("../includes/ofc/open-flash-chart.swf", "admin_types", "575", "300", "9.0.0", "expressInstall.swf", {"data-file":"../includes/ofc/charts/admin_types.php"});
-</script>
 
-<div class='textbox2' name="gottaload">
-
-<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
-<div id="usual1" class="tabnames"> 
-  <ul> 
-    <li><a class="selected" href="#days">Days</a></li> 
-    <li><a href="#types">Types</a></li>
-    <li style="float:right;font-weight:bold;padding-top:6px;"><?php echo ch_gettotalsnippets(); ?> Total Snippets</li>
-  </ul>
-  <div id="days"><br /><br /><div id="admin_days"></div></div> 
-  <div id="types"><br /><br /><div id="admin_types"></div></div> 
-</div> 
- 
-<script type="text/javascript"> 
-  $("#usual1 ul").idTabs(); 
-</script>
-
+<div id="grid">
+	<?php include("moderategrid.php"); ?>
 </div>
+
+</div></center>
 <div class='bottom'></div>
-</center>
-
-
 
 <?php include("footer.php"); ?>

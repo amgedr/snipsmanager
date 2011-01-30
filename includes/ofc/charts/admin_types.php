@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Copyright (c) 2010-2011 CodeHave (http://www.codehave.com/), All Rights Reserved
  * A CodeHill Creation (http://www.codehill.com/)
@@ -31,65 +31,77 @@
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
  *
+ *
+ * This page creates the JSON text needed to display the Days chart in admin/index.php
+ *
  */
- 
+
 session_start(); 
-include('../config.php');
-include('../includes/functions.php');
+include('../../../config.php');
+include('../../../includes/functions.php');
 connect();
 
-include('header.php'); 
+include("../open-flash-chart.php");
 
-require('../includes/login.class.php');
-$loginSys = new LoginSystem();
+//create the line chart and set the values
+$result = mysql_query("SELECT `type`, count(id) as `tcount` FROM `codes` group by `type`");
+	
+$labels = array();
+$values = array();
 
-// if not logged in goto login form, otherwise we can view our page
-if(!$loginSys->isLoggedIn()) {
-	header("Location: login.php");
-	exit;
-}?>
+// 1 PHP, 2 Javascript, 3 Text, 4 Other
+			
+			
+if($result) {	
+	while ($row = mysql_fetch_array($result)){
+		$values[] = (int)$row['tcount'];
+		
+		switch($row['type']) {
+			case '1':
+				$labels[] = "PHP";
+				break;
+			case '2':
+				$labels[] = "JavaScript";
+				break;
+			case '3':
+				$labels[] = "Text";
+				break;
+			case '4':
+				$labels[] = "Other";
+				break;			
+		}
+	}
+}
 
-	<div class='sub'>
-	    <span>Logged in as <?php echo  $_SESSION['userName']; ?>&nbsp;&nbsp;
-    	<a href="changepassword.php">Change Password</a>&nbsp;&nbsp;
-    	<a href="../includes/logout.php">Logout</a></span>
-    	Home</div>
+$bars = new bar();
+$bars->set_values($values);
+$bars->set_colour("1111ff");
 
-	<div class='content'>
-		<div id='error'></div>
+//create a Y Axis object and set the minimum and maximum
+$ymax =(max($values)) + (10 - (max($values) % 10));  //round the maximum to the nearest 10
+$y = new y_axis();
+$y->set_range( 0, $ymax, $ymax/5);
+$y->set_grid_colour("dddddd");
+$y->set_colour("000000");
 
-<div class='top'></div>
-<center>
+//create an X Axis object
+$x = new x_axis();
+$x->set_grid_colour("ffffff");
+$x->set_colour("000000");
+//$x->offset(false);
 
-<script type="text/javascript" src="../includes/ofc/js/swfobject.js"></script>
-<script type="text/javascript">
-	swfobject.embedSWF("../includes/ofc/open-flash-chart.swf", "admin_days", "575", "300", "9.0.0", "expressInstall.swf", {"data-file":"../includes/ofc/charts/admin_days.php"});
-</script>
-<script type="text/javascript">
-	swfobject.embedSWF("../includes/ofc/open-flash-chart.swf", "admin_types", "575", "300", "9.0.0", "expressInstall.swf", {"data-file":"../includes/ofc/charts/admin_types.php"});
-</script>
+//set the values displayed on the X Axis and their look
+$x_label = new x_axis_labels();
+$x_label->set_labels($labels);
+$x_label->set_vertical();
+$x->set_labels($x_label);
 
-<div class='textbox2' name="gottaload">
+$chart = new open_flash_chart();
+$chart->add_element($bars);
+$chart->set_bg_colour("ffffff");
+$chart->set_y_axis($y);
+$chart->set_x_axis($x);
 
-<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
-<div id="usual1" class="tabnames"> 
-  <ul> 
-    <li><a class="selected" href="#days">Days</a></li> 
-    <li><a href="#types">Types</a></li>
-    <li style="float:right;font-weight:bold;padding-top:6px;"><?php echo ch_gettotalsnippets(); ?> Total Snippets</li>
-  </ul>
-  <div id="days"><br /><br /><div id="admin_days"></div></div> 
-  <div id="types"><br /><br /><div id="admin_types"></div></div> 
-</div> 
- 
-<script type="text/javascript"> 
-  $("#usual1 ul").idTabs(); 
-</script>
+echo $chart->toPrettyString();   //print out the above parameters in JSON
 
-</div>
-<div class='bottom'></div>
-</center>
-
-
-
-<?php include("footer.php"); ?>
+?>

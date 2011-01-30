@@ -53,43 +53,32 @@ if(!$loginSys->isLoggedIn()) {
 	    <span>Logged in as <?php echo  $_SESSION['userName']; ?>&nbsp;&nbsp;
     	<a href="changepassword.php">Change Password</a>&nbsp;&nbsp;
     	<a href="../includes/logout.php">Logout</a></span>
-    	Home</div>
+    	News & Updates</div>
 
 	<div class='content'>
 		<div id='error'></div>
 
 <div class='top'></div>
 <center>
-
-<script type="text/javascript" src="../includes/ofc/js/swfobject.js"></script>
-<script type="text/javascript">
-	swfobject.embedSWF("../includes/ofc/open-flash-chart.swf", "admin_days", "575", "300", "9.0.0", "expressInstall.swf", {"data-file":"../includes/ofc/charts/admin_days.php"});
-</script>
-<script type="text/javascript">
-	swfobject.embedSWF("../includes/ofc/open-flash-chart.swf", "admin_types", "575", "300", "9.0.0", "expressInstall.swf", {"data-file":"../includes/ofc/charts/admin_types.php"});
-</script>
-
-<div class='textbox2' name="gottaload">
-
-<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
-<div id="usual1" class="tabnames"> 
-  <ul> 
-    <li><a class="selected" href="#days">Days</a></li> 
-    <li><a href="#types">Types</a></li>
-    <li style="float:right;font-weight:bold;padding-top:6px;"><?php echo ch_gettotalsnippets(); ?> Total Snippets</li>
-  </ul>
-  <div id="days"><br /><br /><div id="admin_days"></div></div> 
-  <div id="types"><br /><br /><div id="admin_types"></div></div> 
-</div> 
- 
-<script type="text/javascript"> 
-  $("#usual1 ul").idTabs(); 
-</script>
-
+<div class='textbox2'>
+<?php
+	include('../includes/rss_read.php'); 
+	
+	$RSSread = new RSSread(true);
+	$RSSread->rssFeed = "http://feeds2.feedburner.com/CodeHill"; //URL for the RSS feed
+	$RSSread->numPosts = 5; //The number of posts to output. -1 use all posts [default:3]
+	$RSSread->whichOne = "w"; //Which format to use: s = Sentences; w = Words; c = Chars; n = None (use all the post) [default:s]
+	$RSSread->numSentences = 1;   //The number of Sentences to use [default:3]
+	$RSSread->numWords = 25;      //The number of Words to use [default:40]
+	$RSSread->numChars = 50;     //The number of Characters to use [default:200]
+	$RSSread->stripLinks = false; //Whether to remove links from posts [default:false]
+	$RSSread->postLinkTarget = ""; // The target to open the links in posts in, takes the same values as the target attribute in the <a> tag. If set to "" or "_self" the target attribute will be omitted [default:_blank] 
+	$RSSread->outputFormat = "<h3>[title]</h3><p>[post][link][Read more][/link]</p>";
+	$RSSread->joinOutputBy = "<br />"; //HTML code that is attached inbetween posts
+	
+	print $RSSread->RSSoutput();	
+?>
 </div>
 <div class='bottom'></div>
-</center>
-
-
 
 <?php include("footer.php"); ?>

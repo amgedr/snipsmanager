@@ -35,19 +35,50 @@
  * This page creates the JSON text needed to display the Days chart in admin/index.php
  *
  */
- 
+
+session_start(); 
+include('../../../config.php');
+include('../../../includes/functions.php');
+connect();
+
 include("../open-flash-chart.php");
 
-$title = new title("Past 30 Days");
+//create the line chart and set the values
+$result = mysql_query("SELECT DATE_FORMAT(`submitdate`, '%m-%d') AS sdate, COUNT(id) AS `scount` " .
+	"FROM `codes` WHERE DATE_SUB(CURDATE(),INTERVAL 30 DAY) <= `submitdate` GROUP BY `sdate`");
+	
+$labels = array();
+$values = array();
 
-//create teh line chart and set the values
-$values = array(1,2,3,2,3,6,7,8,9,2,4,1,6,8,4,2,6,8,9,5,3,1,5,9,0,12,4,7,8,4,9,9,9);
+if($result) {	
+	$today = strtotime("-30 days", time());
+	$rows = array();
+	
+	while ($row = mysql_fetch_array($result)){
+		$rows[$row['sdate']] = $row['scount'];
+	}
+	
+	for($c=0 ; $c<=30 ; $c++) {
+		$day = date("m-d", strtotime("+$c days", $today));
+		if(isset($rows[$day]))
+			$values[] = (int)$rows[$day];  //cast to int because its read from the record as a string
+		else
+			$values[] = 0;
+			
+		$labels[] = $day; //display date + $c
+	}
+}
+
+$dot = new solid_dot();
+$dot->size(3)->halo_size(1)->colour('#1111ff');
+
 $line = new line();
 $line->set_values($values);
 $line->set_colour("1111ff");
+$line->set_default_dot_style($dot);
 
 //create a Y Axis object and set the minimum and maximum
-$ymax = (max($values)) + (10 - (max($values) % 10));  //round the maximum to the nearest 10
+$ymax =(max($values)) + (10 - (max($values) % 10));  //round the maximum to the nearest 10
 $y = new y_axis();
 $y->set_range( 0, $ymax, $ymax/5);
 $y->set_grid_colour("dddddd");
@@ -57,14 +88,20 @@ $y->set_colour("000000");
 $x = new x_axis();
 $x->set_grid_colour("dddddd");
 $x->set_colour("000000");
+$x->offset(false);
+
+//set the values displayed on the X Axis and their look
+$x_label = new x_axis_labels();
+$x_label->set_labels($labels);
+$x_label->set_vertical();
+$x->set_labels($x_label);
 
 $chart = new open_flash_chart();
-$chart->set_title($title);
 $chart->add_element($line);
 $chart->set_bg_colour("ffffff");
 $chart->set_y_axis($y);
 $chart->set_x_axis($x);
 
-echo $chart->toString();   //print out the above parameters in JSON
+echo $chart->toPrettyString();   //print out the above parameters in JSON
 
 ?>

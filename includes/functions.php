@@ -47,7 +47,6 @@ function ch_getsetting($settingname) {
 
 function ch_savesetting($settingname, $settingvalue) {
 	mysql_query("UPDATE settings SET settingvalue='$settingvalue' WHERE settingname='$settingname'");
-
 }
 
 function ch_getsocialbookmarksfolders() {
@@ -155,14 +154,58 @@ function ch_displaylogo() {
 
 // clean an input
 function clean($value)
-{
-  // strip html tags
-  $value = strip_tags($value);
-  // strip slashes
-  $value = stripslashes($value);
-  // strip mysql hacks
-  $value = mysql_real_escape_string($value);
-  // return clean string
-  return $value;
+{  
+  $value = strip_tags($value);   // strip html tags
+  $value = stripslashes($value);  // strip slashes  
+  $value = mysql_real_escape_string($value);  // strip mysql hacks  
+  return $value;  // return clean string
+}
+
+//Get the total number of snippets in the codes table
+function ch_gettotalsnippets() {
+	$result = mysql_query("SELECT COUNT(*) FROM `codes`");
+	list($total) = mysql_fetch_row($result);
+	return $total;
+}
+
+//Get a snippet by its ID
+function ch_getcode($id) {
+	if(empty($id))
+		return null;
+		
+	$result = mysql_query("SELECT `code` FROM `codes` WHERE `id`=" . $id);
+	$row = mysql_fetch_array($result);
+	
+	if(mysql_num_rows($result)) {
+		return $row['code'];
+	}
+	else {
+		return null;
+	}
+}
+
+//Get the code type by its ID
+function ch_gettype($id) {
+	$id = (int)$id;
+	switch($id) {
+		case 1:
+			return 'PHP';
+			break;
+		case 2:
+			return 'JavaScript';
+			break;
+		case 3:
+			return 'Text';
+			break;
+		case 4:
+			return 'C++';
+			break;
+		case 5:
+			return 'Other';
+			break;
+		default:
+			return 'Unknown';
+			break;
+	}
 }
 ?>
