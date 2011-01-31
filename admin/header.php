@@ -10,7 +10,7 @@
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="/codehave/admin/js/jquery-impromptu.3.1.min.js"></script>
-
+<script type="text/javascript" src="js/main.js"></script>
 <style>
 	.tablerow {
 		padding-left:3px;
@@ -67,8 +67,7 @@
 	?>
 	<ul>
     	<li><a href="index.php">Home</a></li>
-		<li><a href="general.php">General</a></li>
-        <li><a href="interface.php">Interface</a></li>
+		<li><a href="settings.php">Settings</a></li>
         <li><a href="moderate.php">Moderate</a></li>
         <li><a href="news.php">News</a></li>
 	</ul>

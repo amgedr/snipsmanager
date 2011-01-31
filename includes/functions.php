@@ -52,7 +52,7 @@ function ch_savesetting($settingname, $settingvalue) {
 function ch_getsocialbookmarksfolders() {
 	if ($handle = opendir('../images/sb')) {
 		$selectedValue = ch_getsetting('iconset');		
-		$filesList = '<select name="sbfolders" style="width: 100px;" onchange="refreshsbicons();">';
+		$filesList = '<select id="sbfolders" name="sbfolders" style="width: 100px;" onchange="refreshsbicons();">';
 		
 		while (false !== ($file = readdir($handle))) {
 			if($file != "." & $file != "..") {				
