@@ -1,7 +1,7 @@
 <?php 
 /**
  * Copyright (c) 2010-2011 CodeHave (http://www.codehave.com/), All Rights Reserved
- * A CodeHill Creation (http://www.codehill.com/)
+ * A CodeHill Creation (http://codehill.com/)
  * 
  * IMPORTANT: 
  * - You may not redistribute, sell or otherwise share this software in whole or in part without
@@ -26,13 +26,15 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @link        http://www.codehave.com/
- * @copyright   2010-2011 CodeHill LLC (http://www.codehill.com/)
+ * @copyright   2010-2011 CodeHill LLC (http://codehill.com/)
  * @license     http://www.codehave.com/license/
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
  *
+ * The moderation page (delete or modify listings).
+ *
  */
- 
+
 session_start();
 include('../config.php');
 include('../includes/functions.php');
@@ -73,12 +75,6 @@ if(!$loginSys->isLoggedIn()) {
 		}
 	}
 	
-	//set the checkbox value of all checkboxes using the checkboxes CSS class to status
-	function selectAll(status) {		
-		$(".checkboxes").each( function() {
-			$(this).attr("checked",status);
-		})
-	}
 	
 	//display the code in a jQuery dialog
 	function showCode(codeTitle, codeId, codeType) {

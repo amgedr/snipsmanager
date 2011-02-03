@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2010-2011 CodeHave (http://www.codehave.com/), All Rights Reserved
- * A CodeHill Creation (http://www.codehill.com/)
+ * A CodeHill Creation (http://codehill.com/)
  * 
  * IMPORTANT: 
  * - You may not redistribute, sell or otherwise share this software in whole or in part without
@@ -26,13 +26,15 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @link        http://www.codehave.com/
- * @copyright   2010-2011 CodeHill LLC (http://www.codehill.com/)
+ * @copyright   2010-2011 CodeHill LLC (http://codehill.com/)
  * @license     http://www.codehave.com/license/
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
  *
+ * Main website's homepage.
+ *
  */
-
+ 
 session_start(); 
 include('config.php');
 include('includes/functions.php');
@@ -45,8 +47,6 @@ if(file_exists("./install.php") & !stristr($sitename, 'localhost')){
 
 include('header.php');
 ?>
-
-
 	<div class='sub'>
 		<span><a href="javascript:void(0);" onClick="extra();">Extra settings</a></span>
 		Add your code
@@ -63,7 +63,6 @@ include('header.php');
     
 	<div class='top'></div>
 	<center><textarea name="code" class="resizable" id="code"></textarea></center>   
-	<!--<div class='bottom'></div>-->
       <div class='extra'>   
           Assign Password? <input id="password" type="password" class="password" name="password" />
       </div>

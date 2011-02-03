@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2010-2011 CodeHave (http://www.codehave.com/), All Rights Reserved
- * A CodeHill Creation (http://www.codehill.com/)
+ * A CodeHill Creation (http://codehill.com/)
  * 
  * IMPORTANT: 
  * - You may not redistribute, sell or otherwise share this software in whole or in part without
@@ -26,13 +26,16 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @link        http://www.codehave.com/
- * @copyright   2010-2011 CodeHill LLC (http://www.codehill.com/)
+ * @copyright   2010-2011 CodeHill LLC (http://codehill.com/)
  * @license     http://www.codehave.com/license/
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
  *
+ * A group of functions used in most pages of the script.
+ *
  */
 
+//Retrieves the value of the setting name passed. 
 function ch_getsetting($settingname) {
 	$result = mysql_query("SELECT * FROM settings WHERE settingname='" . $settingname . "'");
 	$setting = mysql_fetch_array($result);
@@ -45,10 +48,12 @@ function ch_getsetting($settingname) {
 	}
 }
 
+//Updates the setting called $settingname with the value passed in $settingvalue.
 function ch_savesetting($settingname, $settingvalue) {
 	mysql_query("UPDATE settings SET settingvalue='$settingvalue' WHERE settingname='$settingname'");
 }
 
+//Displays an HTML select (combobox) containing the names of social bookmark's folders, e.g. Group 1, Group 2...
 function ch_getsocialbookmarksfolders() {
 	if ($handle = opendir('../images/sb')) {
 		$selectedValue = ch_getsetting('iconset');		
@@ -73,6 +78,7 @@ function ch_getsocialbookmarksfolders() {
 	}
 }
 
+//Displays the social bookmark icons. Each one's link is pointing to it's appropriate service.
 function ch_displaysocialbookmarks($currentTitle) {
 	$iconSet = 	ch_getsetting('iconset');
 	$currentUrl = urlencode($_SERVER['SERVER_NAME'] . $_SERVER["REQUEST_URI"]);
@@ -92,6 +98,7 @@ function ch_displaysocialbookmarks($currentTitle) {
 	echo $html;
 }
 
+//Displays the social bookmark icons with no links.
 function ch_displaysocialbookmarksonly() {
 	$iconSet = ch_getsetting('iconset');
 	
@@ -103,6 +110,7 @@ function ch_displaysocialbookmarksonly() {
 	return $html;
 }
 
+//Displays the top menu
 function ch_displaytopmenu() {
 	$top1text = ch_getsetting('topmenu1text');
 	$top1url = ch_getsetting('topmenu1url');
@@ -138,6 +146,7 @@ function ch_displaytopmenu() {
 	echo $html;
 }
 
+//Displays the logo image and sets it's title and alt tags to the title setting
 function ch_displaylogo() {
 	$imageurl = ch_getsetting('logourl');
 	$title = ch_getsetting('title');

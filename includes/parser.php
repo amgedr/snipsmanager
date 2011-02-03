@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2010-2011 CodeHave (http://www.codehave.com/), All Rights Reserved
- * A CodeHill Creation (http://www.codehill.com/)
+ * A CodeHill Creation (http://codehill.com/)
  * 
  * IMPORTANT: 
  * - You may not redistribute, sell or otherwise share this software in whole or in part without
@@ -26,23 +26,24 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @link        http://www.codehave.com/
- * @copyright   2010-2011 CodeHill LLC (http://www.codehill.com/)
+ * @copyright   2010-2011 CodeHill LLC (http://codehill.com/)
  * @license     http://www.codehave.com/license/
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
  *
+ * Encodes and inserts the snippet and it's details in the database table. Also echos the ID when finished.
+ *
  */
-
+ 
 include('../config.php');
 include('cryptor.php');
 
 $drop = $_POST['drop'];
 connect();
 
-//$code = htmlspecialchars($_POST['code']);
 $code = htmlentities($_POST['code'], ENT_QUOTES);
 $code = str_replace("\\", "&#92;", $code);   //replace backslashes to disable parsing of \n and \t
-//$code = str_replace("'", "&#39;", $code);
+
 $password = mysql_real_escape_string(htmlspecialchars(strip_tags($_POST['password'])));
 $codetitle = htmlspecialchars($_POST['codetitle']);
 
@@ -53,21 +54,8 @@ $sqlInsert = "INSERT INTO codes (code, type, password, codetitle) VALUES ('" .
 
 $affected_rows = mysql_query($sqlInsert);
 
-	
 
-
-// *************** Beginning of debuging code
-$f = fopen("debug.txt", 'a+');
-fwrite($f, "\n\nBefore-> " . $_POST['code'] . "\nAfter-> " . $code); 
-fwrite($f, "\nInsert-> " . $sqlInsert . "\nAffected Rows-> " . $affected_rows);
-fclose($f);
-// *************** End of debuging code
-
-
-	
-	
-function check_values()
-{
+function check_values() {
 	global $sitename;	
 	$id = mysql_insert_id();	
 	$result = mysql_query("SELECT * FROM codes WHERE id='".$id."'") or die(mysql_error());

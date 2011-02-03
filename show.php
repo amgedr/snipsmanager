@@ -1,7 +1,7 @@
 <?php 
 /**
  * Copyright (c) 2010-2011 CodeHave (http://www.codehave.com/), All Rights Reserved
- * A CodeHill Creation (http://www.codehill.com/)
+ * A CodeHill Creation (http://codehill.com/)
  * 
  * IMPORTANT: 
  * - You may not redistribute, sell or otherwise share this software in whole or in part without
@@ -26,10 +26,12 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @link        http://www.codehave.com/
- * @copyright   2010-2011 CodeHill LLC (http://www.codehill.com/)
+ * @copyright   2010-2011 CodeHill LLC (http://codehill.com/)
  * @license     http://www.codehave.com/license/
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
+ *
+ * Displays a snippet with code highlighting.
  *
  */
 
@@ -73,7 +75,6 @@ if(mysql_num_rows($result)) {
 	$source = str_replace(array('(',')'),array('( ',' )',),$row['code']);
 	$source = str_replace(array('(  ','  )'),array('( ',' )'),$source);
 	$source = html_entity_decode($source, ENT_QUOTES);
-	//$source = htmlspecialchars_decode($source, ENT_QUOTES);
 	
 	$geshi = new GeSHi($source, $type);
 	$geshi->enable_line_numbers(GESHI_FANCY_LINE_NUMBERS);

@@ -1,7 +1,7 @@
 <?php 
 /**
  * Copyright (c) 2010-2011 CodeHave (http://www.codehave.com/), All Rights Reserved
- * A CodeHill Creation (http://www.codehill.com/)
+ * A CodeHill Creation (http://codehill.com/)
  * 
  * IMPORTANT: 
  * - You may not redistribute, sell or otherwise share this software in whole or in part without
@@ -26,10 +26,12 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @link        http://www.codehave.com/
- * @copyright   2010-2011 CodeHill LLC (http://www.codehill.com/)
+ * @copyright   2010-2011 CodeHill LLC (http://codehill.com/)
  * @license     http://www.codehave.com/license/
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
+ * 
+ * Displays a contact form.
  *
  */
 
@@ -47,39 +49,33 @@ include('header.php');
            Contact
     </div>
 <div class='body'>
-
 	<div id='error'></div>
-
 	<div class='top'></div>   
 	<center><div class='textbox2' name="content">
-    
-<form action="contact.php" method="post" name="form1">
-<table>
-<tr style="height: 30px;">
-    <td width="120px">Email:</td>
-    <td><input type="text" name="email" value="" style="width: 200px;"></td>
-</tr>
-<tr style="height: 30px;">
-    <td>Name:</td>
-    <td><input type="text" name="name" value="" style="width: 200px;"></td>
-</tr>
-
-<tr style="height: 30px;">
-    <td style="vertical-align:top; padding-top:3px;">Message:</td>
-    <td><textarea name="message" cols="50" rows="6"></textarea></td>
-</tr>
-<tr>
-    <td>&nbsp;</td>
-    <td></td>
-</tr>
-<tr>
-    <td>&nbsp;</td>
-    <td><a href="javascript:void(0);" onClick="submit_contact();">Submit</a></td>
-</tr>
-</table>
-</form>
-    
+        <form action="contact.php" method="post" name="form1">
+        <table>
+        <tr style="height: 30px;">
+            <td width="120px">Email:</td>
+            <td><input type="text" name="email" value="" style="width: 200px;"></td>
+        </tr>
+        <tr style="height: 30px;">
+            <td>Name:</td>
+            <td><input type="text" name="name" value="" style="width: 200px;"></td>
+        </tr>        
+        <tr style="height: 30px;">
+            <td style="vertical-align:top; padding-top:3px;">Message:</td>
+            <td><textarea name="message" cols="50" rows="6"></textarea></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><a href="javascript:void(0);" onClick="submit_contact();">Submit</a></td>
+        </tr>
+        </table>
+        </form>
     </div></center>   
-	<div class='bottom'></div>
-    
+	<div class='bottom'></div>    
 <?php include("footer.php"); ?>

@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2010-2011 CodeHave (http://www.codehave.com/), All Rights Reserved
- * A CodeHill Creation (http://www.codehill.com/)
+ * A CodeHill Creation (http://codehill.com/)
  * 
  * IMPORTANT: 
  * - You may not redistribute, sell or otherwise share this software in whole or in part without
@@ -26,13 +26,15 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @link        http://www.codehave.com/
- * @copyright   2010-2011 CodeHill LLC (http://www.codehill.com/)
+ * @copyright   2010-2011 CodeHill LLC (http://codehill.com/)
  * @license     http://www.codehave.com/license/
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
  *
+ * Main website's header page.
+ *
  */
-
+ 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -61,10 +63,8 @@
 </head>
 
 <body>
-
-<div class='header'>
-   <?php ch_displaytopmenu(); ?> 
-   <a href="index.php"><?php echo ch_displaylogo(); ?></a>
-</div>
-
-<div class='work'>
+    <div class='header'>
+       <?php ch_displaytopmenu(); ?> 
+       <a href="index.php"><?php echo ch_displaylogo(); ?></a>
+    </div>
+    <div class='work'>

@@ -5,6 +5,7 @@ function refreshsbicons() {
 	$.post("getsbicons.php", {iconset:c}, function(data){$("#sbicons").html(data);});	
 }
 
+//save all the settings in the admin/settings.php page by calling includes/saveallsettings.php
 function saveallsettings() {
 	var t=$("#sitetitle").val();
 	var s=$("#slogan").val();
@@ -28,4 +29,11 @@ function saveallsettings() {
 	$.post("../includes/saveallsettings.php", { sitetitle:t, slogan:s, logourl:l, metadescription:d, 
 		metakeywords:k, ownername:n, owneremail:e , item1text:t1, item1url:u1, item2text:t2, item2url:u2,
 		item3text:t3, item3url:u3, item4text:t4, item4url:u4, sbfolders:sb});
+}
+
+//set the checkbox value of all checkboxes using the checkboxes CSS class to status
+function selectAll(status) {		
+	$(".checkboxes").each( function() {
+		$(this).attr("checked",status);
+	})
 }

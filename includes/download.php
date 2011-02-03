@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2010-2011 CodeHave (http://www.codehave.com/), All Rights Reserved
- * A CodeHill Creation (http://www.codehill.com/)
+ * A CodeHill Creation (http://codehill.com/)
  * 
  * IMPORTANT: 
  * - You may not redistribute, sell or otherwise share this software in whole or in part without
@@ -26,13 +26,15 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @link        http://www.codehave.com/
- * @copyright   2010-2011 CodeHill LLC (http://www.codehill.com/)
+ * @copyright   2010-2011 CodeHill LLC (http://codehill.com/)
  * @license     http://www.codehave.com/license/
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
  *
+ * Downloads a code snippet in file with the extension of it's type.
+ *
  */
-
+ 
 
 //download a text file containing the string passed and using the file name and extension passed
 
@@ -71,6 +73,6 @@ if(mysql_num_rows($result)) {
 header("Content-Disposition: attachment; filename=\"sourcefile." . $extension . "\"");
 		
 if(mysql_num_rows($result)) {
-	echo html_entity_decode($row['code'], ENT_QUOTES); // htmlspecialchars_decode($row['code']);
+	echo html_entity_decode($row['code'], ENT_QUOTES); 
 }
 ?>

@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2010-2011 CodeHave (http://www.codehave.com/), All Rights Reserved
- * A CodeHill Creation (http://www.codehill.com/)
+ * A CodeHill Creation (http://codehill.com/)
  * 
  * IMPORTANT: 
  * - You may not redistribute, sell or otherwise share this software in whole or in part without
@@ -26,10 +26,12 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @link        http://www.codehave.com/
- * @copyright   2010-2011 CodeHill LLC (http://www.codehill.com/)
+ * @copyright   2010-2011 CodeHill LLC (http://codehill.com/)
  * @license     http://www.codehave.com/license/
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
+ *
+ * Database upgrader from 1.x to 2.x
  *
  */
 
@@ -41,7 +43,7 @@
 		<title>Installation Process</title>
 		<style type="text/css">
 			*{
-				font-family: Arial, Gadget, sans-serif; /* "Trebuchet MS",Tahoma,sans-serif;*/
+				font-family: Arial, Gadget, sans-serif; 
 			}
 			h1 {
 				text-align: center;
