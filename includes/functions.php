@@ -35,6 +35,8 @@
  *
  */
 
+include('typesfunctions.php');
+
 //Retrieves the value of the setting name passed. 
 function ch_getsetting($settingname) {
 	$result = mysql_query("SELECT * FROM settings WHERE settingname='" . $settingname . "'");
@@ -193,28 +195,20 @@ function ch_getcode($id) {
 	}
 }
 
-//Get the code type by its ID
-function ch_gettype($id) {
-	$id = (int)$id;
-	switch($id) {
-		case 1:
-			return 'PHP';
-			break;
-		case 2:
-			return 'JavaScript';
-			break;
-		case 3:
-			return 'Text';
-			break;
-		case 4:
-			return 'C++';
-			break;
-		case 5:
-			return 'Other';
-			break;
-		default:
-			return 'Unknown';
-			break;
-	}
+//Decode HTML in the code for displaying on pages
+function ch_formatCodeForDisplaying($code) {
+	$code = str_replace(array('(',')'), array('( ',' )',), $code);
+	$code = str_replace(array('(  ','  )'), array('( ',' )'), $code);
+	$code = html_entity_decode($code, ENT_QUOTES);
+	
+	return $code;
+}
+
+//Encode HTML in the code for saving in database
+function ch_formatCodeForDatabase($code) {
+	$code = htmlentities($code, ENT_QUOTES);
+	$code = str_replace("\\", "&#92;", $code);   //replace backslashes to disable parsing of \n and \t
+
+	return $code;
 }
 ?>

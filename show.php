@@ -55,26 +55,10 @@ if(mysql_num_rows($result)) {
 		}
 	}
 
-	if($row['type']=='1') { 
-		$type='PHP'; 
-	}
-	elseif($row['type']=='2') {
-		$type='Javascript';
-	}
-	elseif($row['type']=='3') {
-		$type='text';
-	}
-	elseif($row['type']=='4') {
-		$type='Cpp';
-	}
-	elseif($row['type']=='5') {
-		$type='Other';
-	}
+	$type = ch_gettype($row['type'], false);
 	
 	include_once 'includes/geshi.php';
-	$source = str_replace(array('(',')'),array('( ',' )',),$row['code']);
-	$source = str_replace(array('(  ','  )'),array('( ',' )'),$source);
-	$source = html_entity_decode($source, ENT_QUOTES);
+	$source = ch_formatCodeForDisplaying($row['code']);
 	
 	$geshi = new GeSHi($source, $type);
 	$geshi->enable_line_numbers(GESHI_FANCY_LINE_NUMBERS);
@@ -99,7 +83,7 @@ include('header.php');
 <div class='work'>
     <div class='sub'>    
 	<?php if($found) { ?>
-        <span>Type: <?php echo $type;?></span>
+        <span>Type: <?php echo ch_gettype($row['type'], true);?></span>
            Viewing #<?php echo $id;?>
 	<?php } ?>
     </div>

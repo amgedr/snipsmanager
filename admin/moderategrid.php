@@ -74,7 +74,7 @@ $listings = mysql_query("SELECT * FROM `codes` order by `id` LIMIT $offset, $row
     	<img src="../images/lock.png" title="Password Protected" style="float:right;" /><?php } ?></td>
     <td class="tablerow"><?php echo $row['submitdate']; ?></td>
     <th class="tablerow" style="text-align:center; padding-left:0 !important;">
-    	<a onclick="showCode('<?php echo $row['codetitle']; ?>', <?php echo $row['id']; ?>, '<?php echo ch_gettype($row['type']); ?>')">
+    	<a onclick="showCode('<?php echo $row['codetitle']; ?>', <?php echo $row['id']; ?>, '<?php echo ch_gettype($row['type'], false); ?>')">
 			<img src="../images/moderate/edit.png" title="Edit Snippet" alt="Edit" style="padding-right:3px;" />
 		</a>
         <a  onclick="deleterow(<?php echo $row['id']; ?>)">

@@ -53,24 +53,10 @@ else
 $row = mysql_fetch_array($result);
 		
 if(mysql_num_rows($result)) { 
-	if($row['type']=='1') { 
-		$extension="php";
-	}
-	elseif($row['type']=='2') {
-		$extension="js";
-	}
-	elseif($row['type']=='3') {
-		$extension="txt";
-	}
-	elseif($row['type']=='4') {
-		$extension="cpp";
-	}
-	elseif($row['type']=='5') {
-		$extension="";
-	}
+	$extension = ch_getTypeExtension($row['type']);
 }
 
-header("Content-Disposition: attachment; filename=\"sourcefile." . $extension . "\"");
+header("Content-Disposition: attachment; filename=\"sourcefile" . $extension . "\"");
 		
 if(mysql_num_rows($result)) {
 	echo html_entity_decode($row['code'], ENT_QUOTES); 

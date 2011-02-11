@@ -37,11 +37,12 @@
  
 include('../config.php');
 include('cryptor.php');
+include('functions.php');
 
 $drop = $_POST['drop'];
 connect();
 
-$code = htmlentities($_POST['code'], ENT_QUOTES);
+$code = ch_formatCodeForDatabase($_POST['code']);
 $code = str_replace("\\", "&#92;", $code);   //replace backslashes to disable parsing of \n and \t
 
 $password = mysql_real_escape_string(htmlspecialchars(strip_tags($_POST['password'])));

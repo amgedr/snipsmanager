@@ -42,6 +42,7 @@
 
 <link rel="stylesheet" href="css/reset.css" />
 <link rel="stylesheet" href="css/style.css" /> 
+<link rel="alternate" type="application/rss+xml" title="<?php echo ch_getsetting('title'); ?>" href="<?php echo $sitename . 'feed/'; ?>" />
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/main.js"></script>

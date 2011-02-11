@@ -72,6 +72,31 @@ include('header.php');
 			<option value="1">PHP</option>
 			<option value="2">Javascript</option>
 			<option value="3">Text</option>
+            <option value="5">C++</option>
+            <option value="6">ActionScript</option>
+            <option value="7">Apache</option>
+            <option value="8">AppleScript</option>
+            <option value="9">AWK</option>
+            <option value="10">Bash</option>
+            <option value="11">C</option>
+            <option value="12">C#</option>
+            <option value="13">CSS</option>
+            <option value="14">Delphi</option>
+            <option value="15">Fortran</option>
+            <option value="16">Haskell</option>
+            <option value="17">Java</option>
+            <option value="18">jQuery</option>
+            <option value="19">Modula-2</option>
+            <option value="20">MySQL</option>
+            <option value="21">Perl</option>
+            <option value="22">Python</option>
+            <option value="23">Ruby on Rails</option>
+            <option value="24">Scheme</option>
+            <option value="25">SQL</option>
+            <option value="26">Visual Basic</option>
+            <option value="27">Visual Basic .NET</option>
+            <option value="28">Vim</option>
+            <option value="29">XML</option>
 			<option value="4">Other</option>
 		</select>
 		<a href="javascript:void(0);" onClick="submit_it();">
