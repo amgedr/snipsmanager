@@ -59,7 +59,7 @@ $listings = mysql_query("SELECT * FROM `codes` order by `id` LIMIT $offset, $row
 <form>
 <table style="border:1px solid #999; width:100%;">
 <tr>
-	<th class="tabletitle" style="width:25px;"><input type="checkbox" id="checkboxall" onchange="selectAll(this.checked)" /></th>
+<!--	<th class="tabletitle" style="width:25px;"><input type="checkbox" id="checkboxall" onchange="selectAll(this.checked)" /></th>-->
 	<th class="tabletitle" style="width:40px;">ID</th>
 	<th class="tabletitle">Title</th>
     <th class="tabletitle" style="width:125px;">Date</th>
@@ -68,7 +68,7 @@ $listings = mysql_query("SELECT * FROM `codes` order by `id` LIMIT $offset, $row
 
 <?php while($row = mysql_fetch_array($listings)) {?>
 <tr>
-	<td class="tablerow"><input type="checkbox" id="check<?php echo $row['id']; ?>" class="checkboxes" /></td>
+<!--	<td class="tablerow"><input type="checkbox" id="check<?php echo $row['id']; ?>" class="checkboxes" /></td>-->
     <td class="tablerow"><?php echo $row['id']; ?></td>
     <td class="tablerow"><?php echo $row['codetitle']; if(!empty($row['password'])) { ?>
     	<img src="../images/lock.png" title="Password Protected" style="float:right;" /><?php } ?></td>
