@@ -1,20 +1,20 @@
 <?php
 /**
- * Copyright (c) 2010-2011 CodeHave (http://www.codehave.com/), All Rights Reserved
+ * Copyright (c) 2010-2011 SnipsManager (http://www.snipsmanager.com/), All Rights Reserved
  * A CodeHill Creation (http://codehill.com/)
  * 
  * IMPORTANT: 
  * - You may not redistribute, sell or otherwise share this software in whole or in part without
- *   the consent of CodeHave's owners. Please contact the author for more information.
+ *   the consent of SnipsManager's owners. Please contact the author for more information.
  * 
- * - Link to codehave.com may not be removed from the software pages without permission of CodeHave's
+ * - Link to snipsmanager.com may not be removed from the software pages without permission of SnipsManager's
  *   owners. This copyright notice may not be removed from the source code in any case.
  *
  * - This file can be used, modified and distributed under the terms of the License Agreement. You
  *   may edit this file on a licensed Web site and/or for private development. You must adhere to
  *   the Source License Agreement. The latest copy can be found online at:
  * 
- *   http://www.codehave.com/license/
+ *   http://www.snipsmanager.com/license/
  * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR 
  * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND 
@@ -25,9 +25,9 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @link        http://www.codehave.com/
+ * @link        http://www.snipsmanager.com/
  * @copyright   2010-2011 CodeHill LLC (http://codehill.com/)
- * @license     http://www.codehave.com/license/
+ * @license     http://www.snipsmanager.com/license/
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
  *
@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="css/style.css" /> 
 
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="/codehave/admin/js/jquery-impromptu.3.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-impromptu.3.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <style>
@@ -92,9 +92,9 @@
 
 </style>
 
-<meta name="generator" content="CodeHave <?php echo ch_getsetting('version'); ?>" />
+<meta name="generator" content="SnipsManager <?php echo ch_getsetting('version'); ?>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>CodeHave Admin</title>
+<title>SnipsManager Admin</title>
 </head>
 <body>
 
@@ -111,5 +111,5 @@
         <li><a href="news.php">News</a></li>
 	</ul>
     <?php } ?>
-	<a href="../index.php"><img src="images/logo.png" title="Home" alt="CodeHave"/></a>
+	<a href="../index.php"><img src="images/snipsmanager.png" title="Home" alt="SnipsManager"/></a>
 </div>
