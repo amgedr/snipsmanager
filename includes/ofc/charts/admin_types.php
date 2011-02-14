@@ -44,31 +44,108 @@ connect();
 include("../open-flash-chart.php");
 
 //create the line chart and set the values
-$result = mysql_query("SELECT `type`, count(id) as `tcount` FROM `codes` group by `type`");
+$result = mysql_query("SELECT `type` as `typeid`, count(id) as `tcount` FROM `codes` group by `type` order by `tcount` desc");
 	
 $labels = array();
 $values = array();
 
 // 1 PHP, 2 Javascript, 3 Text, 4 Other
-			
-			
+
 if($result) {	
 	while ($row = mysql_fetch_array($result)){
 		$values[] = (int)$row['tcount'];
-		
-		switch($row['type']) {
-			case '1':
+
+		switch($row['typeid']) {
+			case 0:
+				$labels[] = "Not Defined";
+				break;
+			case 1:
 				$labels[] = "PHP";
 				break;
-			case '2':
+			case 2:
 				$labels[] = "JavaScript";
 				break;
-			case '3':
+			case 3:
 				$labels[] = "Text";
 				break;
-			case '4':
+			case 4:
 				$labels[] = "Other";
 				break;			
+			case 5:
+				$labels[] = 'C++';
+				break;
+			case 6:
+				$labels[] = 'ActionScript';
+				break;
+			case 7:
+				$labels[] = 'Apache';
+				break;
+			case 8:
+				$labels[] = 'AppleScript';
+				break;
+			case 9:
+				$labels[] = 'AWK';
+				break;
+			case 10:
+				$labels[] = 'Bash';
+				break;
+			case 11:
+				$labels[] = 'C';
+				break;
+			case 12:
+				$labels[] = 'C#';
+				break;
+			case 13:
+				$labels[] = 'CSS';
+				break;
+			case 14:
+				$labels[] = 'Delphi';
+				break;
+			case 15:
+				$labels[] = 'Fortran';
+				break;
+			case 16:
+				$labels[] = 'Haskell';
+				break;
+			case 17:
+				$labels[] = 'Java';
+				break;
+			case 18:
+				$labels[] = 'jQuery';
+				break;
+			case 19:
+				$labels[] = 'Modula-2';
+				break;
+			case 20:
+				$labels[] = 'MySQL';
+				break;
+			case 21:
+				$labels[] = 'Perl';
+				break;
+			case 22:
+				$labels[] = 'Python';
+				break;
+			case 23:
+				$labels[] = 'Ruby on Rails';
+				break;
+			case 24:
+				$labels[] = 'Scheme';
+				break;
+			case 25:
+				$labels[] = 'SQL';
+				break;
+			case 26:
+				$labels[] = 'Visual Basic';
+				break;
+			case 27:
+				$labels[] = 'Visual Basic .NET';
+				break;
+			case 28:
+				$labels[] = 'Vim';
+				break;
+			case 29:
+				$labels[] = 'XML';
+				break;
 		}
 	}
 }
