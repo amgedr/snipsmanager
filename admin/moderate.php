@@ -40,16 +40,18 @@ include('../config.php');
 include('../includes/functions.php');
 connect();
 
-include('header.php');
-
 require('../includes/login.class.php');
 $loginSys = new LoginSystem();
 
-// if not logged in goto login form, otherwise we can view our page
+//if not logged in goto login form, otherwise we can view our page
 if(!$loginSys->isLoggedIn()) {
 	header("Location: login.php");
 	exit;
-}?>
+}
+
+include('header.php');
+
+?>
 
 	<div class='sub'>
 	    <span>Logged in as <?php echo  $_SESSION['userName']; ?>&nbsp;&nbsp;

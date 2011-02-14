@@ -40,8 +40,6 @@ include('../config.php');
 include('../includes/functions.php');
 connect();
 
-include('header.php'); 
-
 require('../includes/login.class.php');
 $loginSys = new LoginSystem();
 
@@ -49,7 +47,11 @@ $loginSys = new LoginSystem();
 if(!$loginSys->isLoggedIn()) {
 	header("Location: login.php");
 	exit;
-}?>
+}
+
+include('header.php'); 
+
+?>
 
 	<div class='sub'>
 	    <span>Logged in as <?php echo  $_SESSION['userName']; ?>&nbsp;&nbsp;
@@ -82,5 +84,5 @@ if(!$loginSys->isLoggedIn()) {
 ?>
 </div>
 <div class='bottom'></div>
-
+</center>
 <?php include("footer.php"); ?>
