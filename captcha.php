@@ -31,42 +31,73 @@
  * @author      Amgad Suliman, CodeHill LLC <amgadhs@codehill.com>
  * @version     2.2
  *
- * Encodes and inserts the snippet and it's details in the database table. Also echos the ID when finished.
+ * Snippet captcha request form.
  *
  */
- 
-session_start(); 
 
-include('../config.php');
-include('cryptor.php');
-include('functions.php');
-
-$drop = $_POST['drop'];
+session_start();
+include('config.php');
+include('includes/functions.php');
 connect();
 
-$code = ch_formatCodeForDatabase($_POST['code']);
-$code = str_replace("\\", "&#92;", $code);   //replace backslashes to disable parsing of \n and \t
+include('header.php');
 
-$password = mysql_real_escape_string(htmlspecialchars(strip_tags($_POST['password'])));
-$codetitle = htmlspecialchars($_POST['codetitle']);
-$usecaptcha = ($_POST['captcha'] == 'on' ? true : false);
+if(empty($_GET['id'])) {	
+?>
 
-$cryptor = new Cryptor();
+<div class="work">
+<div class='sub'></div>
 
-$sqlInsert = "INSERT INTO codes (code, type, password, codetitle, captcha) VALUES ('" . $code . $usecaptcha . "', '" .
-     $drop . "', '" . $cryptor->encrypt($password) . "', '" . $codetitle . "', '" . $usecaptcha . "')";
-
-$affected_rows = mysql_query($sqlInsert);
-
-
-function check_values() {
-	global $sitename;	
-	$id = mysql_insert_id();	
-	$result = mysql_query("SELECT * FROM codes WHERE id='".$id."'") or die(mysql_error());
-    $row = mysql_fetch_array($result);	
-	echo "<center>Share URL: <input id='share' class='text' type='text' value='" . 
-	    $sitename . "show.php?id=".$row['id']."'/></center>";	
+<div class='body'>
+<div id='error' style="display:block;">Please enter an ID</div>
+    
+<?php
 }
+else {	
+	$id = mysql_real_escape_string(htmlspecialchars(strip_tags($_GET['id'])));
+	
+	if(isset($_POST['submit']))	{		
+		if(empty($_POST['keystring'])) {
+			$error = 'Invalid.';
+		}
+		else {
+			if(count($_POST)>0){
+				if(isset($_SESSION['captcha_keystring']) && $_SESSION['captcha_keystring'] == $_POST['keystring']){
+					$_SESSION['pages'] = $id;
+					die("<html><head><script>window.location='show.php?id=$id';</script></head></html>");
+				}else{
+					$error = 'The text you entered does not match.';
+				}
+			}
 
-check_values();
+			unset($_SESSION['captcha_keystring']);
+		}
+	}
+?>
+
+<div class="work">
+<div class='sub'>
+      Viewing #<?php echo $id;?> (CAPTCHA PROTECTED !)
+</div>
+
+<div class='body'>
+<div id='error'></div>
+   <div class='top'></div>   
+   <center><div class='textbox2' name="gottaload">
+   
+	<form method="post">   
+        <span style="color:#FF0000; font-weight:bold;"><?php if(isset($error)){ echo "$error<br />"; } ?></span>
+       
+        Please enter the text in the image to view this code snippet: <br /><br />
+		<input type="text" name="keystring" id="keystring"  class="password" style="width:200px;" />
+		<img src="./includes/kcaptcha/?<?php echo session_name()?>=<?php echo session_id()?>" 
+			style="margin:0px 20px -19px 20px;">
+        <input type="submit" name="submit" value="Submit!" />
+	</form>
+   
+   </div></center>   
+   <div class='bottom'></div>
+
+<?php }
+include('footer.php');
 ?>

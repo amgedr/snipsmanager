@@ -3,6 +3,7 @@ function submit_it(){
 	var a=$(".drop").val();
 	var b=$("#password").val();
 	var e=$("#codetitle").val();
+	var v=$("#captcha:checked").val();
 	
 	if(c===""){
 		$("#error").html("You didn't enter a code sample!");
@@ -11,7 +12,7 @@ function submit_it(){
 		$("#error").slideUp("fast");
 		$("form").slideUp("slow");
 		$(".body").html('<center><img src="images/ajax-loader.gif" /></center>');
-		$.post("includes/parser.php",{code:c,drop:a,password:b,codetitle:e}, function(d){ $(".body").html(d); });
+		$.post("includes/parser.php",{code:c,drop:a,password:b,codetitle:e,captcha:v}, function(d){ $(".body").html(d); });
 	}
 }
 		

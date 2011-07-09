@@ -15,9 +15,9 @@ $fontsdir = 'fonts';
 //$length = mt_rand(5,6); # random 5 or 6
 $length = 5;
 
-# CAPTCHA image size (you do not need to change it, this parameters is optimal)
-$width = 120;
-$height = 60;
+# CAPTCHA image size (you do not need to change it, the optimal parameters are width:120, height:60)
+$width = 100;  
+$height = 50;
 
 # symbol's vertical fluctuation amplitude divided by 2
 $fluctuation_amplitude = 5;
@@ -26,11 +26,11 @@ $fluctuation_amplitude = 5;
 $no_spaces = false;
 
 # show credits
-$show_credits = true; # set to false to remove credits line. Credits adds 12 pixels to image height
+$show_credits = false; # set to false to remove credits line. Credits adds 12 pixels to image height
 $credits = ''; # if empty, HTTP_HOST will be shown
 
-# CAPTCHA image colors (RGB, 0-255) 
-$foreground_color = array(28, 54, 85);
+# CAPTCHA image colors (RGB, 0-255), $background_color = array(233, 238, 244);
+$foreground_color = array(20, 40, 75);
 $background_color = array(255, 255, 255);
 //$foreground_color = array(mt_rand(0,100), mt_rand(0,100), mt_rand(0,100));
 //$background_color = array(mt_rand(200,255), mt_rand(200,255), mt_rand(200,255));

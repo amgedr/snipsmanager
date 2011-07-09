@@ -54,6 +54,12 @@ if(mysql_num_rows($result)) {
 			echo '<script type="text/javascript">window.location="login.php?id='.$id.'";</script>';
 		}
 	}
+	
+	if($row['captcha'] == 1) {
+		if($_SESSION['pages']!=$id) {
+			echo '<script type="text/javascript">window.location="captcha.php?id='.$id.'";</script>';
+		}
+	}	
 
 	$type = ch_gettype($row['type'], false);
 	

@@ -99,9 +99,13 @@ include('header.php');
             <option value="29">XML</option>
 			<option value="4">Other</option>
 		</select>
+
+		<label style="float:right;width:430px;text-align:left;margin:5px 13px 0 0;font-size:14px;">
+			<input type="checkbox" id="captcha" name="captcha" />Ask for CAPTCHA verification
+		</label>
 		<a href="javascript:void(0);" onClick="submit_it();">
 			<img alt="Share your source code now!" src="images/submit.png"/></a>      
-	</div>      
+	</div>	
 </form>
 
 <?php include("footer.php"); ?>
