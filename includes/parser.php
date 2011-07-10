@@ -53,7 +53,7 @@ $usecaptcha = ($_POST['captcha'] == 'on' ? true : false);
 
 $cryptor = new Cryptor();
 
-$sqlInsert = "INSERT INTO codes (code, type, password, codetitle, captcha) VALUES ('" . $code . $usecaptcha . "', '" .
+$sqlInsert = "INSERT INTO codes (code, type, password, codetitle, captcha) VALUES ('" . $code . "', '" .
      $drop . "', '" . $cryptor->encrypt($password) . "', '" . $codetitle . "', '" . $usecaptcha . "')";
 
 $affected_rows = mysql_query($sqlInsert);

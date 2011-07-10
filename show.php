@@ -55,7 +55,7 @@ if(mysql_num_rows($result)) {
 		}
 	}
 	
-	if($row['captcha'] == 1) {
+	if(($row['captcha'] == 1) || ($row['captcha'] == true)) {
 		if($_SESSION['pages']!=$id) {
 			echo '<script type="text/javascript">window.location="captcha.php?id='.$id.'";</script>';
 		}
