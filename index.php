@@ -64,7 +64,10 @@ include('header.php');
 	<div class='top'></div>
 	<center><textarea name="code" class="resizable" id="code"></textarea></center>   
       <div class='extra'>   
-          Assign Password? <input id="password" type="password" class="password" name="password" />
+		Assign Password? <input id="password" type="password" class="password" name="password" /><br />
+		<label style="text-align:left;margin:5px 13px 0 0;">
+			<input type="checkbox" id="captcha" name="captcha" />Ask for CAPTCHA verification
+		</label>
       </div>
 
 	<div class='bot'>   
@@ -100,9 +103,6 @@ include('header.php');
 			<option value="4">Other</option>
 		</select>
 
-		<label style="float:right;width:430px;text-align:left;margin:5px 13px 0 0;font-size:14px;">
-			<input type="checkbox" id="captcha" name="captcha" />Ask for CAPTCHA verification
-		</label>
 		<a href="javascript:void(0);" onClick="submit_it();">
 			<img alt="Share your source code now!" src="images/submit.png"/></a>      
 	</div>	
