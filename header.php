@@ -40,6 +40,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
+<link rel="shortcut icon" href="favicon.ico" />
+
 <link rel="stylesheet" href="css/reset.css" />
 <link rel="stylesheet" href="css/style.css" /> 
 <link rel="alternate" type="application/rss+xml" title="<?php echo ch_getsetting('title'); ?>" href="<?php echo $sitename . 'feed/'; ?>" />
