@@ -58,7 +58,7 @@ class LoginSystem
 	 * @return true or false
 	 */
 	function isLoggedIn() {
-		if($_SESSION['LoggedIn']) {
+		if(isset($_SESSION['LoggedIn'])) {
 			return true;
 		}
 		else 
