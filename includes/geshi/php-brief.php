@@ -171,7 +171,7 @@ $language_data = array (
         //Variables
         0 => "[\\$]{1,2}[a-zA-Z_][a-zA-Z0-9_]*"
         ),
-    'STRICT_MODE_APPLIES' => GESHI_MAYBE,
+    'STRICT_MODE_APPLIES' => GESHI_NEVER,
     'SCRIPT_DELIMITERS' => array(
         0 => array(
             '<?php' => '?>'

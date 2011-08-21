@@ -197,18 +197,11 @@ function ch_getcode($id) {
 
 //Decode HTML in the code for displaying on pages
 function ch_formatCodeForDisplaying($code) {
-	$code = str_replace(array('(',')'), array('( ',' )',), $code);
-	$code = str_replace(array('(  ','  )'), array('( ',' )'), $code);
-	$code = html_entity_decode($code, ENT_QUOTES);
-	
-	return $code;
+	return html_entity_decode($code, ENT_QUOTES, "UTF-8");
 }
 
 //Encode HTML in the code for saving in database
 function ch_formatCodeForDatabase($code) {
-	$code = htmlentities($code, ENT_QUOTES);
-	$code = str_replace("\\", "&#92;", $code);   //replace backslashes to disable parsing of \n and \t
-
-	return $code;
+	return htmlentities($code, ENT_QUOTES, "UTF-8");
 }
 ?>

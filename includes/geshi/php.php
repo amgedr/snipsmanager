@@ -1063,16 +1063,16 @@ $language_data = array(
         //Variables
         0 => "[\\$]{1,2}[a-zA-Z_][a-zA-Z0-9_]*"
         ),
-    'STRICT_MODE_APPLIES' => GESHI_MAYBE,
+    'STRICT_MODE_APPLIES' => GESHI_NEVER,
     'SCRIPT_DELIMITERS' => array(
         0 => array(
-            '<'.'?php' => '?'.'>'
+            '<?php' => '?>'
             ),
         1 => array(
-            '<'.'?' => '?'.'>'
+            '<?' => '?>'
             ),
         2 => array(
-            '<'.'%' => '%'.'>'
+            '<%' => '%>'
             ),
         3 => array(
             '<script language="php">' => '</script>'
@@ -1098,7 +1098,7 @@ $language_data = array(
             "\\/(?=[^*\\/])|".
             "<(?!<<)|".
             "<<<(?P<phpdoc>\w+)\s.*?\s\k<phpdoc>".
-            ")*(?P<end>%>)/sm",
+            ")*(?P<end>%>)/sm"
         ),
     'HIGHLIGHT_STRICT_BLOCK' => array(
         0 => true,

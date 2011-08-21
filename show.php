@@ -73,7 +73,7 @@ if(mysql_num_rows($result)) {
 	$geshi->set_tab_width(5);
 	$geshi->enable_classes();
 	$geshi->set_overall_id('mycode');
-	
+
 	$found=true;
 	
 	$additional_script_tags = '<style type="text/css">' . $geshi->get_stylesheet() . '</style>';
