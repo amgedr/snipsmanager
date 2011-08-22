@@ -75,17 +75,17 @@ include('header.php');
                         <table style="width: 300px;">
                             <tr>
                                 <td width="80px"><strong>Username:</strong></td>
-                                <td><input name="username" type="text" style="width:200px" /></td>
+                                <td><input name="username" type="text" style="width:203px" /></td>
                             </tr>
                             <tr>
                                 <td><strong>Password:</strong></td>
-                                <td><input name="password" type="password" style="width:200px" /></td>
+                                <td><input name="password" type="password" style="width:203px" /></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
                                 <td style="text-align:right; padding-right:12px;">
                                 	<div style="float:left;"><a href="forgotpassword.php">Forgot password</a></div>
-	                                <input type="submit" value="Login" /></td>
+	                                <input type="submit" value="Login" class="button orange" /></td>
                             </tr>    
                         </table>
                     </center>

@@ -110,8 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
-                                <td style="padding-left:120px;">
-                                	<input type="submit" value="Change" style="width:80px;" /></td>
+                                <td style="padding-left:125px;">
+                                	<input type="submit" value="Change" style="width:80px;" class="button orange"/></td>
                             </tr>
                         </table>
                     </center>

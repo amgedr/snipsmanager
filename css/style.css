@@ -171,8 +171,8 @@ h1 {
 }
 .bot select {
 	float:right;
-	margin-right: 10px;
-	margin-top: 3px;
+	margin-right:10px;
+	margin-top:0;
 }
 .bot2 {
 	margin:0px auto;
@@ -188,9 +188,9 @@ a {
 .drop {
 	border:1px solid #d5d5d5;
 	background:#FFF;
-	width:430px;
-	margin-left:14px;
-	font-size:25px;
+	width:300px;
+	margin-left:200px;
+	font-size:23px;
     line-height:40px;
 	color:#333;
 }
@@ -212,10 +212,10 @@ a {
 	color:#333;
 }
 .password {
-	width:470px;
+	width:440px;
 	padding:10px;
 	border:1px solid #d5d5d5;
-	margin-bottom:5px;
+	margin:0 10px 5px 0;
 }
 #share {
 	width:450px;

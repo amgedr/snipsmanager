@@ -89,10 +89,10 @@ else {
         <span style="color:#FF0000; font-weight:bold;"><?php if(isset($error)){ echo "$error<br />"; } ?></span>
        
         Please enter the text in the image to view this code snippet: <br /><br />
-		<input type="text" name="keystring" id="keystring"  class="password" style="width:200px;" />
+		<input type="text" name="keystring" id="keystring"  class="password" style="width:297px;" />
 		<img src="./includes/kcaptcha/?<?php echo session_name()?>=<?php echo session_id()?>" 
 			style="margin:0px 20px -19px 20px;">
-        <input type="submit" name="submit" value="Submit!" />
+        <input type="submit" name="submit" value="Submit" class="button orange" />
 	</form>
    
    </div></center>   

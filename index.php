@@ -103,8 +103,7 @@ include('header.php');
 			<option value="4">Other</option>
 		</select>
 
-		<a href="javascript:void(0);" onClick="submit_it();">
-			<img alt="Share your source code now!" src="images/submit.png"/></a>      
+		<a href="javascript:void(0);" onClick="submit_it();" class="button orange">Submit</a>   
 	</div>	
 </form>
 

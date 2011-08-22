@@ -174,7 +174,9 @@ include('header.php');
 </script>
 
 
-<div style="text-align:right;"><a href="javascript:void(0);" onClick="saveallsettings();">Submit</a></div>
+<div style="text-align:right;">
+	<a href="javascript:void(0);" onClick="saveallsettings();" class="button orange">Submit</a>
+</div>
 </form>
 </div></center>
    <div class='bottom'></div>

@@ -48,6 +48,7 @@
 
 <link rel="stylesheet" href="css/reset.css" />
 <link rel="stylesheet" href="css/style.css" /> 
+<link rel="stylesheet" href="css/buttons.css" />
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery-impromptu.3.1.min.js"></script>

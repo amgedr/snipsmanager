@@ -93,9 +93,9 @@ else {
 	<form method="post">   
         <span style="color:#FF0000; font-weight:bold;"><?php if(isset($error)){ echo "$error<br />"; } ?></span>
        
-        Please enter the correct password to access the file : <br />
+        Please enter the correct password to access the file : <br /><br />
         <input type="password" class="password" name="password" />        
-        <input type="submit" name="submit" value="Submit!" />
+        <input type="submit" name="submit" value="Submit" class="button orange" />
 	</form>
    
    </div></center>   
