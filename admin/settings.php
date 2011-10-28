@@ -156,15 +156,6 @@ include('header.php');
                 <td>URL:</td>
                 <td><input type="text" id="item4url" name="item4url" value="<?php echo ch_getsetting('topmenu4url'); ?>" /></td>
             </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td style="padding-top: 7px; vertical-align:top;" colspan="2">Social Bookmarks:</td>
-                <td><div style="padding-top:7px; width:110px; float:left;"><?php echo ch_getsocialbookmarksfolders(); ?></div>&nbsp;
-                <div id="sbicons" style="height: 32px; width:300px; float:right; text-align:center;"><?php echo ch_displaysocialbookmarksonly(); ?></div></td>
-            </tr>
         </table>    
     </div> 
 </div> 

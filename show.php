@@ -110,15 +110,47 @@ include('header.php');
 	<br />
 
 	<div class='top'></div>   
-	<center><div class='textbox2'><?php if($found) { echo $geshi->parse_code(); } ?></div></center>   
+	<center><div class='textbox2' id="snippet"><?php if($found) { echo $geshi->parse_code(); } ?></div></center>   
 	<div class='bottom'></div>
   
     <div class='bot2'>
+<script type="text/javascript">
+	function fnSelect(objId) {
+		fnDeSelect();
+		if (document.selection) {
+		var range = document.body.createTextRange();
+ 	        range.moveToElementText(document.getElementById(objId));
+		range.select();
+		}
+		else if (window.getSelection) {
+		var range = document.createRange();
+		range.selectNode(document.getElementById(objId));
+		window.getSelection().addRange(range);
+		}
+	}
+		
+	function fnDeSelect() {
+		if (document.selection) document.selection.empty(); 
+		else if (window.getSelection)
+                window.getSelection().removeAllRanges();
+	}
+</script>	
         <form method="post" name="download" action="includes/download.php">
             <input type="hidden" value="<?php echo $id; ?>" name="id"  />
             <input type="hidden" value="<?php echo $row['password']; ?>" name="passwd"  />
-            <input type="image" style="padding-left:10px;" src="images/download.png" />
-	        <div style="float:right; padding-right: 10px;"><?php ch_displaysocialbookmarks($row['codetitle']); ?></div>
+            <input type="image" style="padding-left:10px;" src="images/source.png" alt="Download Source" title="Download snippet in a text file" />
+	        <div style="float:right; padding-right:10px; text-align:right; width:185px;">
+				<!-- AddThis Button BEGIN -->
+				<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+				<a class="addthis_button_preferred_1"></a>
+				<a class="addthis_button_preferred_2"></a>
+				<a class="addthis_button_preferred_3"></a>
+				<a class="addthis_button_preferred_4"></a>
+				<a class="addthis_button_compact"></a>
+				</div>
+				<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
+				<!-- AddThis Button END -->
+			</div>
         </form>        
     </div>
 
