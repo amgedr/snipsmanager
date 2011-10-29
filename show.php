@@ -139,6 +139,9 @@ include('header.php');
             <input type="hidden" value="<?php echo $id; ?>" name="id"  />
             <input type="hidden" value="<?php echo $row['password']; ?>" name="passwd"  />
             <input type="image" style="padding-left:10px;" src="images/source.png" alt="Download Source" title="Download snippet in a text file" />
+			<a href="javascript:fnSelect('snippet');">
+				<img src="images/selectall.png" alt="Select Snippet" title="Select the snippet" />
+			</a>
 	        <div style="float:right; padding-right:10px; text-align:right; width:185px;">
 				<!-- AddThis Button BEGIN -->
 				<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
