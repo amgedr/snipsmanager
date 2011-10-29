@@ -72,7 +72,7 @@ include('header.php');
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <td><a href="javascript:void(0);" onClick="submit_contact();">Submit</a></td>
+            <td><a href="javascript:void(0);" onClick="submit_contact();" class="button orange">Submit</a></td>
         </tr>
         </table>
         </form>
