@@ -62,7 +62,6 @@ include('header.php');
 ?>
 
 <div class='work'>
-
     <div class='sub'>Admin Log In</div>
     <div class='content'>
         <div id='error'>
@@ -85,7 +84,7 @@ include('header.php');
                                 <td>&nbsp;</td>
                                 <td style="text-align:right; padding-right:12px;">
                                 	<div style="float:left;"><a href="forgotpassword.php">Forgot password</a></div>
-	                                <input type="submit" value="Login" class="button orange" /></td>
+	                                <input type="submit" value="Login" class="button orange light" /></td>
                             </tr>    
                         </table>
                     </center>
