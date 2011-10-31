@@ -77,20 +77,20 @@ h3 {
 	padding-bottom:5px; /* was: 20px */
 }
 
-.content table {
+.fieldstable {
 	width: 565px;
 }
 
-.content table tr {
+.fieldstable tr {
 	height: 30px;
 }
 
-.content table tr td input[type="text"] {
+.fieldstable tr td input[type="text"] {
 	width: 430px;
 
 }
 
-.content table tr td textarea {
+.fieldstable tr td textarea {
 	width: 430px;
 }
 
@@ -235,3 +235,73 @@ a {
 	width:75px;
 	text-align:center;
 }
+
+.hor-minimalist {
+	font-size: 12px;
+	background: #fff;
+	border-collapse: collapse;
+	text-align: left;
+}
+.hor-minimalist th {
+	font-size: 12px;
+	font-weight: bold;
+	color: #039;
+	padding: 10px 8px;
+	border-bottom: 2px solid #6678b1;
+}
+.hor-minimalist tfoot {
+	font-size: 12px;
+	font-weight: bold;
+	color: #039;
+	padding: 10px 8px;
+	border-top: 2px solid #6678b1;
+	border-bottom: 2px solid #6678b1;
+}
+.hor-minimalist td {
+	border-bottom: 1px solid #ccc;
+	color: #669;
+	padding: 6px 8px;
+}
+.hor-minimalist tbody tr:hover td {
+	color: #009;
+}
+
+.tablerow {
+	padding-left:3px;
+	border:1px solid #999;
+	vertical-align:middle;
+}
+.tabletitle {
+	background-color:#D9EAF3;
+	padding-left:3px;
+	border:1px solid #999;
+	vertical-align:middle;
+}
+.tablenav {
+	text-align:center;
+	vertical-align:middle;
+	font-weight:bold;
+	border:0 !important;
+}
+.checkboxes { }
+
+/*-------------impromptu---------- */
+.jqifade{ position: absolute; background-color: #aaaaaa; }
+div.jqi{ width: 700px; height: 450px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; position: absolute; background-color:#eee ; font-size: 11px; text-align: left; border: solid 1px #eeeeee; -moz-border-radius: 10px; -webkit-border-radius: 10px; padding: 7px; }
+div.jqi .jqicontainer{ font-weight: bold; }
+div.jqi .jqiclose{ position: absolute; top: 4px; right: -2px; width: 18px; cursor: default; color: #bbbbbb; font-weight: bold; }
+div.jqi .jqimessage{ padding: 5px; line-height: 20px; color: #444444; }
+div.jqi .jqibuttons{ text-align: right; padding: 5px 0 5px 0; }
+div.jqi button{ padding: 3px 10px; margin: 0 10px; background-color: #2F6073; border: solid 1px #f4f4f4; color: #ffffff; font-weight: bold; font-size: 12px; }
+div.jqi button:hover{ background-color: #728A8C; }
+div.jqi button.jqidefaultbutton{ background-color: #BF5E26; }
+.jqiwarning .jqi .jqibuttons{ background-color: #BF5E26; }
+
+div.jqi #codetitle { font-size:16px; width:99%; border:1px solid #999; margin-bottom: 15px;}
+div.jqi #codeview { height:310px; border:1px solid #999; padding:5px; overflow:auto; background-color:#ffffff; width:98%; }
+
+div.jqi .jqimessage .field{ padding: 5px 0; }
+div.jqi .jqimessage .field label{ display: block; clear: left; float: left; width: 100px; }
+div.jqi .jqimessage .field input{ width: 150px; border: solid 1px #777777; }
+div.jqi .jqimessage .field input.error{ width: 150px; border: solid 1px #ff0000; }
+/*-------------------------------- */

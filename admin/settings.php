@@ -70,8 +70,9 @@ include('header.php');
         <li><a class="selected" href="#general">General</a></li> 
         <li><a href="#interface">Interface</a></li>
     </ul>
+
     <div id="general"><br /><br />
-        <table>
+        <table class="fieldstable">
             <tr>
                 <td width="160px">Title:</td>
                 <td><input type="text" id="sitetitle" name="sitetitle" style="width: 430px;" value="<?php echo ch_getsetting('title'); ?>" /></td>
@@ -115,7 +116,7 @@ include('header.php');
         </table>
     </div> 
     <div id="interface"><br /><br />
-        <table>
+        <table class="fieldstable">
             <tr>
                 <td style="width:115px;"><strong>Menu Item 1</strong></td>
                 <td style="width:45px;">Text:</td>
