@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             <div class='textbox2' name="gottaload"> <br />
                 <form method="post" name="form1" >
                     <center>
-                        <table style="width: 350px;">
+                        <table class="fieldstable" style="width: 350px;">
                             <tr>
                                 <td width="120px"><strong>Current Password:</strong></td>
                                 <td><input name="password" type="password" style="width:200px" /></td>

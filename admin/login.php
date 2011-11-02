@@ -71,7 +71,7 @@ include('header.php');
             <div class='textbox2' name="gottaload"> <br />
                 <form method="post" name="form1" action="login.php">
                     <center>
-                        <table style="width: 300px;">
+                        <table class="fieldstable" style="width: 300px;">
                             <tr>
                                 <td width="80px"><strong>Username:</strong></td>
                                 <td><input name="username" type="text" style="width:203px" /></td>
