@@ -65,12 +65,13 @@ include('header.php');
 <center><div class='textbox2' name="gottaload">
 <form method="post" name="form1">
 
-<div id="usual1" class="tabnames" style="height:380px;"> 
+<div id="usual1" class="tabnames" style="height:400px;"> 
     <ul> 
         <li><a class="selected" href="#general">General</a></li> 
         <li><a href="#interface">Interface</a></li>
+		<li><a href="#admins">Admins</a></li>
     </ul>
-
+	<br />
     <div id="general"><br /><br />
         <table class="fieldstable">
             <tr>
@@ -159,6 +160,16 @@ include('header.php');
             </tr>
         </table>    
     </div> 
+    <div id="admins"><br /><br />
+	
+	
+        <table class="fieldstable">
+            <tr>
+                <td width="160px"></td>
+                <td></td>
+            </tr>
+		</table>	
+    </div>
 </div> 
  
 <script type="text/javascript"> 
