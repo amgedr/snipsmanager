@@ -149,6 +149,7 @@ h1 {
 	font-family:Arial, Helvetica, sans-serif;
 	text-align:left;
 	line-height:20px;
+	word-wrap: break-word;
 }
 .textbox2 code {
 	display:block;
