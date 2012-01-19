@@ -73,7 +73,7 @@ include('header.php');
 	<div class='bot'>   
 		<select name="drop" class='drop'>
 			<option value="1">PHP</option>
-			<option value="2">Javascript</option>
+			<option value="2">JavaScript</option>
 			<option value="3">Text</option>
             <option value="5">C++</option>
             <option value="6">ActionScript</option>

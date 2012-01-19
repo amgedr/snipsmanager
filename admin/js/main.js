@@ -25,7 +25,7 @@ function saveallsettings() {
 	var u4=$("#item4url").val();
 	
 	var sb=$("#sbfolders").val();
-	
+
 	$.post("../includes/saveallsettings.php", { sitetitle:t, slogan:s, logourl:l, metadescription:d, 
 		metakeywords:k, ownername:n, owneremail:e , item1text:t1, item1url:u1, item2text:t2, item2url:u2,
 		item3text:t3, item3url:u3, item4text:t4, item4url:u4, sbfolders:sb});

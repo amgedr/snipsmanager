@@ -35,6 +35,7 @@
  *
  */
 
+
 session_start(); 
 include('config.php');
 include('includes/functions.php');
@@ -45,26 +46,23 @@ if(!empty($_GET['id'])) {
 } else {
 	$id = 0;	
 }
-$result = mysql_query("SELECT * FROM codes WHERE id = '".$id."'");
-$row = mysql_fetch_array($result);
 		
-if(mysql_num_rows($result)) { 
-	if($row['password']!='') {
+if(ch_codeexists($id)) { 
+	if(ch_getcodepassword($id) != NULL) {
 		if($_SESSION['pages']!=$id)	{
 			echo '<script type="text/javascript">window.location="login.php?id='.$id.'";</script>';
 		}
 	}
-	
-	if(($row['captcha'] == 1) || ($row['captcha'] == true)) {
+	elseif(ch_getcodecaptcha($id)) {
 		if($_SESSION['pages']!=$id) {
 			header('location:captcha.php?id=' . $id);			
 		}
 	}	
 
-	$type = ch_gettype($row['type'], false);
+	$type = ch_gettype(ch_getcodetype($id), false);
 	
 	include_once 'includes/geshi.php';
-	$source = ch_formatCodeForDisplaying($row['code']);
+	$source = ch_formatCodeForDisplaying(ch_getcode($id));
 	
 	$geshi = new GeSHi($source, $type);
 	$geshi->enable_line_numbers(GESHI_FANCY_LINE_NUMBERS);
@@ -89,7 +87,7 @@ include('header.php');
 <div class='work'>
     <div class='sub'>    
 	<?php if($found) { ?>
-        <span>Type: <?php echo ch_gettype($row['type'], true);?></span>
+        <span>Type: <?php echo ch_gettype(ch_getcodetype($id), true);?></span>
            Viewing #<?php echo $id;?>
 	<?php } ?>
     </div>
@@ -104,7 +102,7 @@ include('header.php');
 			
 	<div id='error'></div>
 	<div class='top3'></div>
-    <center><div class="textbox1"><?php echo $row['codetitle']; ?></div></center>
+    <center><div class="textbox1"><?php echo ch_getcodetitle($id); // $row['codetitle']; ?></div></center>
     <div class='bottom3'></div>
 
 	<br />
@@ -136,8 +134,8 @@ include('header.php');
 	}
 </script>	
         <form method="post" name="download" action="includes/download.php">
-            <input type="hidden" value="<?php echo $id; ?>" name="id"  />
-            <input type="hidden" value="<?php echo $row['password']; ?>" name="passwd"  />
+            <input type="hidden" value="<?=$id;?>" name="id"  />
+            <input type="hidden" value="<?= ch_getcodepassword($id)?>" name="passwd"  />
             <input type="image" style="padding-left:10px;" src="images/source.png" alt="Download Source" title="Download snippet in a text file" />
 			<a href="javascript:fnSelect('snippet');">
 				<img src="images/selectall.png" alt="Select Snippet" title="Select the snippet" />

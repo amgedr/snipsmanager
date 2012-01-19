@@ -93,6 +93,6 @@ else {
 	ch_savesetting('topmenu4url', '');
 }
 
-ch_savesetting('iconset', $_POST['sbfolders']);	
+//ch_savesetting('iconset', $_POST['sbfolders']);	
 
 ?>

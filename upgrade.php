@@ -35,6 +35,21 @@
  *
  */
 
+
+
+/* Upgrading to 2.3
+  
+ALTER TABLE `codes` ADD `captcha` TINYINT NULL DEFAULT '0' COMMENT 'Ask for CAPTCHA before display this snippet.'
+ 
+INSERT INTO `settings` (`settingid`, `settingname`, `settingvalue`)
+VALUES (NULL, 'urlwww', '0'), (NULL, 'urlindex', '0'), (NULL, 'urlshorten', '0');
+
+  
+  
+ */
+
+
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>

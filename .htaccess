@@ -1,0 +1,12 @@
+RewriteEngine On
+
+#shortens URLs from /show.php?id=123 to /123
+RewriteRule ^([0-9].*) show.php?id=$1 [L]
+
+#uncomment and modify domain to redirect www.example.com to example.com
+#RewriteCond %{HTTP_HOST} ^www.example.com [NC]
+#RewriteRule ^(.*)$ http://example.com/$1 [L,R=301]
+
+#uncomment and modify domain to redirect /index.php to /
+#RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(([^/]+/)*)index\.php\ HTTP/
+#RewriteRule index\.php$ http://example.com/%1 [R=301,L]
