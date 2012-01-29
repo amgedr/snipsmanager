@@ -60,7 +60,12 @@ $affected_rows = mysql_query($sqlInsert);
 $id = mysql_insert_id();	
 $result = mysql_query("SELECT * FROM codes WHERE id='".$id."'") or die(mysql_error());
 $row = mysql_fetch_array($result);	
-$link = $sitename . "show.php?id=" . $row['id'];
+
+//Full URL
+//$link = $sitename . "show.php?id=" . $row['id'];
+
+//Shortened URL
+$link = $sitename . $row['id'];
 
 include_once 'geshi.php';
 $type = ch_gettype(ch_getcodetype($id), false);
