@@ -92,7 +92,10 @@ $listings = mysql_query("SELECT * FROM `codes` order by `id` LIMIT $offset, $row
 					</td>
 					<td class="tablenav" style="width: 350px;">
 						<?php
-							for($c=1 ; $c<=$totalPages ; $c++) {
+							$pagingStart = $pageNum > 5? $pageNum - 5 : 1;
+							$pagingEnd = $totalPages < ($pageNum + 5)? $totalPages : $pageNum + 5;
+							
+							for($c=$pagingStart ; $c<=$pagingEnd ; $c++) {
 								if($c == $pageNum) {
 									echo '<strong>' . $c . '</strong>';
 								} else {
@@ -101,6 +104,8 @@ $listings = mysql_query("SELECT * FROM `codes` order by `id` LIMIT $offset, $row
 								
 								if($c < $totalPages)
 									echo "&nbsp;&nbsp;";
+								else
+									break;
 							}
 						?>
 					</td>
