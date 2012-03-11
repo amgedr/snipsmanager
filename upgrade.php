@@ -87,13 +87,13 @@
 					mysql_query("CREATE TABLE IF NOT EXISTS `settings` (" . 
 						"`settingid` bigint(20) unsigned NOT NULL AUTO_INCREMENT, `settingname` varchar(50) NOT NULL," .
 						" `settingvalue` varchar(300) NOT NULL, UNIQUE KEY `settingid` (`settingid`)" .
-						") ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;") or 
+						") ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24;") or 
 						die("Could not create setting table. Error: " . mysql_error());
 
 					//version 2.2
 					//insert default settings into the settings table
 					mysql_query("INSERT INTO `settings` (`settingid`, `settingname`, `settingvalue`) VALUES " .
-						"(1, 'version', '2.2'), " .
+						"(1, 'version', '2.3'), " .
 						"(2, 'title', 'SnipsManager'), " .
 						"(5, 'slogan', 'Share the code!'), " .
 						"(6, 'metadescription', 'A code sharing website.'), " .
@@ -109,25 +109,41 @@
 						"(15, 'topmenu4text', ''), " .
 						"(16, 'topmenu4url', ''), " .
 						"(18, 'ownername', ''), " .
-						"(19, 'owneremail', '');") 
+						"(19, 'owneremail', ''), " .
+						"(20, 'urlwww', '0'), " .
+						"(21, 'urlindex', '1'), " .
+						"(22, 'urlshorten', '1'); ")
 						or die("Could not insert records in table settings. Error: " . mysql_error());
 				}
 		
 				//version 2.2
 				//Alter table codes. Doesn't need to return an error if the SQL statement didn't execute
 				//because the only error that could occure this far in the code is Column Already Exists.
-				mysql_query("ALTER TABLE `codes` ADD COLUMN `codetitle` varchar(200) NOT NULL, " . 
-					"ADD COLUMN `submitdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP;");
+				mysql_query("ALTER TABLE `codes` ADD COLUMN `codetitle` varchar(200) NOT NULL, " .
+						"ADD COLUMN `submitdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP ");
 		
 				//version 2.3
 				//Alter table codes. Doesn't need to return an error if the SQL statement didn't execute
 				//because the only error that could occure this far in the code is Column Already Exists.
-				mysql_query("ALTER TABLE `codes` ADD `captcha` TINYINT NULL DEFAULT '0' COMMENT " .
-					"'Ask for CAPTCHA before display this snippet.'");
+				mysql_query("ALTER TABLE `codes` ADD `captcha` TINYINT NULL DEFAULT '0' " .
+					"COMMENT 'Ask for CAPTCHA before display this snippet.' ");
 
 				//version 2.3
-				mysql_query("INSERT INTO `settings` (`settingid`, `settingname`, `settingvalue`) " .
-					"VALUES (NULL, 'urlwww', '0'), (NULL, 'urlindex', '0'), (NULL, 'urlshorten', '0')"); 
+				//Add URL redirection settings
+				$result = mysql_query("SELECT * FROM `settings` WHERE `settingname` LIKE 'urlwww'");
+				if(mysql_num_rows($result) == 0)
+					mysql_query("INSERT INTO `settings` (`settingid`, `settingname`, `settingvalue`) " .
+						"VALUES (NULL, 'urlwww', '0')");
+				
+				$result = mysql_query("SELECT * FROM `settings` WHERE `settingname` LIKE 'urlindex'");
+				if(mysql_num_rows($result) == 0)
+					mysql_query("INSERT INTO `settings` (`settingid`, `settingname`, `settingvalue`) " .
+						"VALUES (NULL, 'urlindex', '0')");
+
+				$result = mysql_query("SELECT * FROM `settings` WHERE `settingname` LIKE 'urlshorten'");
+				if(mysql_num_rows($result) == 0)
+					mysql_query("INSERT INTO `settings` (`settingid`, `settingname`, `settingvalue`) " .
+						"VALUES (NULL, 'urlshorten', '0')");
 				
 				echo '<p style="color:green; font-weight:bold;">The database upgrade completed successfully.</p>';
 			
@@ -142,18 +158,16 @@
         	<a href="index.php">Homepage</a>
         </td><td style="text-align:center;">
 			<a href="admin/index.php">Admin Area</a>
-        </td></tr></table>
-			        
+        </td></tr></table>		        
         
         <?php } else {  ?>  
             <p>To upgrade the database from version 1.2 and 1.5 to 2.2 please click the button below.</p>
             <br />
             <br />
-
             
             <form method="get" action="" >     
             	<input type="hidden" id="upgrade" name="upgrade" value="start" />       	
-                <center><input type="submit" value="Start Database Upgrade"  /></center>
+                <center><input type="submit" value="Start Database Upgrade" /></center>
             </form>
         <?php } ?>
         

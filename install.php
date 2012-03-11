@@ -76,23 +76,23 @@ if(isset($_POST['mysql_username'])){
 			die("Could not insert records in table admin. Error: " . mysql_error());
 
 		//create table codes
-		mysql_query("CREATE TABLE IF NOT EXISTS `codes` (`code` mediumtext," .
-			" `type` varchar(255) DEFAULT NULL, `id` int(27) NOT NULL AUTO_INCREMENT," .
-			" `password` varchar(255) DEFAULT NULL, `codetitle` varchar(200) NOT NULL," .
-			" `submitdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,  PRIMARY KEY (`id`)" . 
-			") ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=93;") or 
+		mysql_query("CREATE TABLE IF NOT EXISTS `codes` (`code` mediumtext,`type` varchar(255) DEFAULT NULL," .
+			" `id` int(27) NOT NULL AUTO_INCREMENT, `password` varchar(255) DEFAULT NULL, " .
+			"`codetitle` varchar(200) NOT NULL, `submitdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP, " .
+			"`captcha` tinyint(4) DEFAULT '0' COMMENT 'Ask for CAPTCHA before display this snippet.', " .
+			"PRIMARY KEY (`id`)) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT;") or 
 			die("Could not create codes table. Error: " . mysql_error());
 
 		//create table settings
 		mysql_query("CREATE TABLE IF NOT EXISTS `settings` (" . 
 			"`settingid` bigint(20) unsigned NOT NULL AUTO_INCREMENT, `settingname` varchar(50) NOT NULL," .
 			" `settingvalue` varchar(300) NOT NULL, UNIQUE KEY `settingid` (`settingid`)" .
-			") ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;") or 
+			") ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24;") or 
 			die("Could not create setting table. Error: " . mysql_error());
 
 		//insert default settings into the settings table
 		mysql_query("INSERT INTO `settings` (`settingid`, `settingname`, `settingvalue`) VALUES " .
-			"(1, 'version', '2.2'), " .
+			"(1, 'version', '2.3'), " .
 			"(2, 'title', 'SnipsManager'), " .
 			"(5, 'slogan', 'Share the code!'), " .
 			"(6, 'metadescription', 'A code sharing website.'), " .
@@ -108,7 +108,10 @@ if(isset($_POST['mysql_username'])){
 			"(15, 'topmenu4text', ''), " .
 			"(16, 'topmenu4url', ''), " .
 			"(18, 'ownername', ''), " .
-			"(19, 'owneremail', '');") 
+			"(19, 'owneremail', ''), " .
+			"(20, 'urlwww', '0'), " .
+			"(21, 'urlindex', '1'), " .
+			"(22, 'urlshorten', '1'); ")
 			or die("Could not insert records in table settings. Error: " . mysql_error());
 
 		$siteName = str_replace('install.php','',f());		
