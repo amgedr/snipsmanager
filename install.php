@@ -80,7 +80,7 @@ if(isset($_POST['mysql_username'])){
 			" `id` int(27) NOT NULL AUTO_INCREMENT, `password` varchar(255) DEFAULT NULL, " .
 			"`codetitle` varchar(200) NOT NULL, `submitdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP, " .
 			"`captcha` tinyint(4) DEFAULT '0' COMMENT 'Ask for CAPTCHA before display this snippet.', " .
-			"PRIMARY KEY (`id`)) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT;") or 
+			"PRIMARY KEY (`id`)) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;") or 
 			die("Could not create codes table. Error: " . mysql_error());
 
 		//create table settings
