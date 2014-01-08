@@ -1,6 +1,7 @@
 SnipsManager is a free and open source PHP script for creating websites to share source code and plain text like emails, poems and articles with others. It has a simple Ajax interface that can be customized using the admin pages.
 
-For a complete list of feature and some screenshots please visit http://codehill.com/snipsmanager/
+For a complete list of feature and some screenshots please visit:
+http://codehill.com/snipsmanager/
 
 Installation Instructions
 =========================
